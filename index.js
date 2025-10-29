@@ -41,13 +41,24 @@ function calculateTokens() {
 
 calculateTokens() 
 */
+
 // Basic Terminal Chat App with OpenAI START
+
+// Initialize conversation content array
+  const context = [
+    { role: "system", 
+      content: "You are a helpful assistant." }
+  ]
+
 async function aiAnswer(aiQue) {
+  context.push({ role: "user", content: aiQue }); // Append user question to content array
     const response = await client.responses.create({
       model: "gpt-4o-mini",
-      input: aiQue
+      input: context
     });
-    
+  
+    context.push({role: "assistant", content: response.output_text}); // Append AI response to content array
+    console.log(context+"\nAI Response:");
   console.log(response.output_text);
 }
 
