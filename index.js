@@ -3,9 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // import { encoding_for_model } from 'tiktoken';
-
 const client = new openAi({apiKey : process.env.openAIKey});
-
 /*
 const response= await client.responses.create({
   instructions: "give result in maximum 10 words",
